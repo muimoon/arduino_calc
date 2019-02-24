@@ -1,4 +1,6 @@
 
+
+
 #include <Keypad.h>
 #include <LiquidCrystal.h>
 #include <stdlib.h>
@@ -43,25 +45,28 @@ const byte ROWS = 4; // Four rows
 const byte COLS = 4; // Four columns
 // Define the Keymap
 char keys[ROWS][COLS] = {
-  {'A','3','2','1'},
-  {'B','6','5','4'},
-  {'C','9','8','7'},
-  {'D','#','0','*'}
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
 };
  
   // Connect keypad ROW0, ROW1, ROW2 and ROW3 to these Arduino pins.
-byte rowPins[ROWS] = { 2, 3, 4, 5 };
+byte rowPins[ROWS] = { 1, 2, 3, 4 };
 // Connect keypad COL0, COL1, COL2, and COL3 to these Arduino pins.
-byte colPins[COLS] = { 6, 7, 8, 9 }; 
+byte colPins[COLS] = { 5, 6, 7, 8 }; 
 
 // Create the Keypad
 Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
 ///////////////////////////////////////////////////////LCD SETUP///////////////////////////////////////
-LiquidCrystal lcd(10,11,12, 13, A0, A1);
+LiquidCrystal lcd(10,11,12,A0,A1,A2);
 
 void setup()
 {
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
    lcd.begin(8,2);
 lcd.clear();
 lcd.setCursor(0,0);
